@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css"  />
+    <title>Matador de Monstro</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        <div class="painel">
+
+            <div class="jogador">
+                <p class="nome">Jogador</p>
+                <div  class="progressoJ">
+                    <div :style=" efeitoJ < 20 ? [{backgroundColor: 'red', width: efeitoJ+'%'}] : [{backgroundColor: 'green', width: efeitoJ+'%'}]" class="efeitoJ" >
+                       
+
+                    </div>
+                    
+                </div>
+                <p> {{efeitoJ}}%</p>
+
+            </div>
+        
+
+            <div class="monstro">
+            <p class="nome"> Monstro</p>
+            <div class="progressoM">
+                <div :style=" efeitoM < 20 ? [{ backgroundColor: 'red', width: efeitoM+'%'}] : [{ backgroundColor: 'green', width: efeitoM+'%'}] " class="efeitoM">
+
+                </div>
+            </div>
+            <p> {{efeitoM}}%</p>
+            </div>
+        </div>
+
+        <div class="controle"  v-if=" efeitoM == 0">
+       <p id="resultado"> VOCÊ VENCEU :)</p>
+        </div>
+        <div class="controle"  v-if=" efeitoJ == 0">
+        <p id="resultado">VOCÊ PERDEU :(</p>
+        </div>
+
+        <div class="controle">
+            <template v-if=" menu == false">
+               
+                <button id="novo" @click=" menu = true"> NOVO JOGO</button>
+            </template>
+            <template v-else>
+                <button id="ataque"  @click="ataque">ATAQUE</button>
+                <button id="ataqueespecial" @click="ataqueEspecial">ATAQUE ESPECIAL</button>
+                <button id="curar" @click="curar">CURAR</button>
+                <button id="desistir" @click="sair">SAIR</button>
+            </template>
+        
+
+           
+        </div>
+
+<div class="timeline">
+
+    <div v-for=" p in painel"> 
+        <div :class=" p.classe">
+            {{p.texto}} {{p.p}}
+        </div>
+      
+    
+    </div>
+    
+
+            
+     
+        </div>
+    
+
+       
+    
+
+
+     </div>
+     
+   </div>
+       
+   
+
+    
+   
+
+    
+    
+  
+</div>
+
+    </div>
+
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
